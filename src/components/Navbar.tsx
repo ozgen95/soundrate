@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Music, LogOut, User, Menu, X } from "lucide-react";
+import { Music, LogOut, User, Menu, X, Search } from "lucide-react";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 export default function Navbar() {
@@ -49,6 +49,13 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
+          <Link
+            href="/search"
+            className="text-zinc-400 hover:text-white transition flex items-center gap-1.5 text-sm"
+          >
+            <Search className="w-4 h-4" />
+            Search
+          </Link>
           {user ? (
             <>
               <Link
@@ -97,6 +104,13 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden border-t border-zinc-800/50 bg-zinc-950/95 backdrop-blur-xl">
           <div className="px-4 py-4 space-y-3">
+            <Link
+              href="/search"
+              onClick={() => setMenuOpen(false)}
+              className="block text-zinc-300 hover:text-white transition py-1"
+            >
+              Search
+            </Link>
             {user ? (
               <>
                 <Link
