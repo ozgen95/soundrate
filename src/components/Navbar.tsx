@@ -56,6 +56,12 @@ export default function Navbar() {
             Explore
           </Link>
           <Link
+            href="/friends"
+            className="text-zinc-400 hover:text-white transition text-sm"
+          >
+            Find Friends
+          </Link>
+          <Link
             href="/search"
             className="text-zinc-400 hover:text-white transition flex items-center gap-1.5 text-sm"
           >
@@ -122,6 +128,13 @@ export default function Navbar() {
               className="block text-zinc-300 hover:text-white transition py-1"
             >
               Explore
+            </Link>
+            <Link
+              href="/friends"
+              onClick={() => setMenuOpen(false)}
+              className="block text-zinc-300 hover:text-white transition py-1"
+            >
+              Find Friends
             </Link>
             <Link
               href="/search"
