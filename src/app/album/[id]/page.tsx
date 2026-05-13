@@ -106,7 +106,7 @@ export default function AlbumPage() {
 
       if (allRatings) {
         const reviews = allRatings
-          .filter((r) => r.user_id !== currentUserId)
+          .filter(( => true))
           .map((r) => {
             const profile = r.profiles as unknown as {
               username: string;
