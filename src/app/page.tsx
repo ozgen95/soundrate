@@ -1,7 +1,19 @@
 import Link from "next/link";
-import { Music, Star, Users, ListMusic } from "lucide-react";
+import { Music, Star, Users, ListMusic, ArrowRight } from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  // If logged in, redirect to explore
+  if (user) {
+    redirect("/explore");
+  }
+
   return (
     <div className="min-h-[calc(100vh-4rem)]">
       {/* Hero */}
@@ -30,10 +42,11 @@ export default function Home() {
             Get started
           </Link>
           <Link
-            href="/auth/login"
-            className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-white font-medium rounded-xl border border-zinc-700 transition text-base"
+            href="/explore"
+            className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-white font-medium rounded-xl border border-zinc-700 transition text-base flex items-center gap-2"
           >
-            Sign in
+            Explore
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
@@ -72,12 +85,11 @@ export default function Home() {
               <ListMusic className="w-5 h-5 text-amber-400" />
             </div>
             <h3 className="text-lg font-semibold text-white mb-2">
-              Create Lists
+              Discover Music
             </h3>
             <p className="text-zinc-400 text-sm leading-relaxed">
-              Curate collections like &ldquo;Best of 2025&rdquo; or
-              &ldquo;Road Trip Bangers.&rdquo; Share your taste with the
-              world.
+              Explore trending tracks, new releases, and see what the community
+              rates highest.
             </p>
           </div>
         </div>

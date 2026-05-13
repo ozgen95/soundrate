@@ -50,6 +50,12 @@ export default function Navbar() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
           <Link
+            href="/explore"
+            className="text-zinc-400 hover:text-white transition text-sm"
+          >
+            Explore
+          </Link>
+          <Link
             href="/search"
             className="text-zinc-400 hover:text-white transition flex items-center gap-1.5 text-sm"
           >
@@ -110,6 +116,13 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden border-t border-zinc-800/50 bg-zinc-950/95 backdrop-blur-xl">
           <div className="px-4 py-4 space-y-3">
+            <Link
+              href="/explore"
+              onClick={() => setMenuOpen(false)}
+              className="block text-zinc-300 hover:text-white transition py-1"
+            >
+              Explore
+            </Link>
             <Link
               href="/search"
               onClick={() => setMenuOpen(false)}
