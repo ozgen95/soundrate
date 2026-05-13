@@ -56,6 +56,12 @@ export default function Navbar() {
             <Search className="w-4 h-4" />
             Search
           </Link>
+          <Link
+            href="/feed"
+            className="text-zinc-400 hover:text-white transition flex items-center gap-1.5 text-sm"
+          >
+            Feed
+          </Link>
           {user ? (
             <>
               <Link
@@ -110,6 +116,13 @@ export default function Navbar() {
               className="block text-zinc-300 hover:text-white transition py-1"
             >
               Search
+            </Link>
+            <Link
+              href="/feed"
+              onClick={() => setMenuOpen(false)}
+              className="block text-zinc-300 hover:text-white transition py-1"
+            >
+              Feed
             </Link>
             {user ? (
               <>

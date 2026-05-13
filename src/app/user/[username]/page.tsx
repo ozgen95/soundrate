@@ -1,10 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Star, Users, Music, Disc3 } from "lucide-react";
+import {
+  Star,
+  Users,
+  Music,
+  Disc3,
+  Loader2,
+  UserPlus,
+  UserMinus,
+} from "lucide-react";
 
 interface RatingItem {
   id: string;
@@ -27,7 +35,8 @@ interface RatingItem {
 
 type TabType = "all" | "songs" | "albums";
 
-export default function ProfilePage() {
+export default function UserProfilePage() {
+  const { username } = useParams<{ username: string }>();
   const [profile, setProfile] = useState<{
     id: string;
     username: string;
@@ -37,33 +46,61 @@ export default function ProfilePage() {
   const [ratings, setRatings] = useState<RatingItem[]>([]);
   const [followersCount, setFollowersCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
   const [tab, setTab] = useState<TabType>("all");
   const [loading, setLoading] = useState(true);
+  const [followLoading, setFollowLoading] = useState(false);
 
   const supabase = createClient();
-  const router = useRouter();
+
+  const loadFollowState = useCallback(
+    async (profileId: string, userId: string | null) => {
+      const { count: fc } = await supabase
+        .from("follows")
+        .select("*", { count: "exact", head: true })
+        .eq("following_id", profileId);
+      setFollowersCount(fc || 0);
+
+      const { count: fgc } = await supabase
+        .from("follows")
+        .select("*", { count: "exact", head: true })
+        .eq("follower_id", profileId);
+      setFollowingCount(fgc || 0);
+
+      if (userId) {
+        const { data: followData } = await supabase
+          .from("follows")
+          .select("id")
+          .eq("follower_id", userId)
+          .eq("following_id", profileId)
+          .single();
+        setIsFollowing(!!followData);
+      }
+    },
+    [supabase],
+  );
 
   useEffect(() => {
     async function load() {
       const {
         data: { user },
       } = await supabase.auth.getUser();
+      setCurrentUserId(user?.id || null);
 
-      if (!user) {
-        router.push("/auth/login");
-        return;
-      }
-
-      // Fetch profile
       const { data: profileData } = await supabase
         .from("profiles")
         .select("id, username, display_name, bio")
-        .eq("id", user.id)
+        .eq("username", username)
         .single();
+
+      if (!profileData) {
+        setLoading(false);
+        return;
+      }
 
       setProfile(profileData);
 
-      // Fetch all ratings with song/album details
       const { data: ratingsData } = await supabase
         .from("ratings")
         .select(
@@ -72,39 +109,54 @@ export default function ProfilePage() {
           album:albums(spotify_id, title, cover_url, artist:artists(name)),
           reviews(body)`,
         )
-        .eq("user_id", user.id)
+        .eq("user_id", profileData.id)
         .order("created_at", { ascending: false });
 
       setRatings((ratingsData as unknown as RatingItem[]) || []);
-
-      // Counts
-      const { count: fc } = await supabase
-        .from("follows")
-        .select("*", { count: "exact", head: true })
-        .eq("following_id", user.id);
-      setFollowersCount(fc || 0);
-
-      const { count: fgc } = await supabase
-        .from("follows")
-        .select("*", { count: "exact", head: true })
-        .eq("follower_id", user.id);
-      setFollowingCount(fgc || 0);
-
+      await loadFollowState(profileData.id, user?.id || null);
       setLoading(false);
     }
     load();
-  }, [supabase, router]);
+  }, [username, supabase, loadFollowState]);
+
+  async function handleFollow() {
+    if (!currentUserId || !profile) return;
+    setFollowLoading(true);
+
+    if (isFollowing) {
+      await supabase
+        .from("follows")
+        .delete()
+        .eq("follower_id", currentUserId)
+        .eq("following_id", profile.id);
+      setIsFollowing(false);
+      setFollowersCount((c) => c - 1);
+    } else {
+      await supabase
+        .from("follows")
+        .insert({ follower_id: currentUserId, following_id: profile.id });
+      setIsFollowing(true);
+      setFollowersCount((c) => c + 1);
+    }
+
+    setFollowLoading(false);
+  }
 
   if (loading) {
     return (
       <div className="flex items-center justify-center py-32">
-        <div className="w-8 h-8 border-2 border-zinc-700 border-t-amber-400 rounded-full animate-spin" />
+        <Loader2 className="w-8 h-8 text-zinc-500 animate-spin" />
       </div>
     );
   }
 
-  if (!profile) return null;
+  if (!profile) {
+    return (
+      <div className="text-center py-32 text-zinc-400">User not found</div>
+    );
+  }
 
+  const isOwnProfile = currentUserId === profile.id;
   const songRatings = ratings.filter((r) => r.song !== null);
   const albumRatings = ratings.filter((r) => r.album !== null);
   const filtered =
@@ -115,19 +167,44 @@ export default function ProfilePage() {
       {/* Profile header */}
       <div className="flex items-start gap-6 mb-10">
         <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-2xl font-bold text-amber-400 shrink-0">
-          {profile.display_name?.[0]?.toUpperCase() ||
-            profile.username?.[0]?.toUpperCase() ||
+          {(profile.display_name || profile.username)?.[0]?.toUpperCase() ||
             "?"}
         </div>
-        <div>
-          <h1 className="text-2xl font-bold text-white">
-            {profile.display_name || profile.username}
-          </h1>
-          <p className="text-zinc-400 text-sm">@{profile.username}</p>
+        <div className="flex-1">
+          <div className="flex items-center gap-4">
+            <div>
+              <h1 className="text-2xl font-bold text-white">
+                {profile.display_name || profile.username}
+              </h1>
+              <p className="text-zinc-400 text-sm">@{profile.username}</p>
+            </div>
+            {!isOwnProfile && currentUserId && (
+              <button
+                onClick={handleFollow}
+                disabled={followLoading}
+                className={`ml-auto px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1.5 ${
+                  isFollowing
+                    ? "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 border border-zinc-700"
+                    : "bg-amber-400 text-zinc-900 hover:bg-amber-300"
+                }`}
+              >
+                {isFollowing ? (
+                  <>
+                    <UserMinus className="w-4 h-4" />
+                    Unfollow
+                  </>
+                ) : (
+                  <>
+                    <UserPlus className="w-4 h-4" />
+                    Follow
+                  </>
+                )}
+              </button>
+            )}
+          </div>
           {profile.bio && (
             <p className="text-zinc-300 mt-2 text-sm">{profile.bio}</p>
           )}
-
           <div className="flex gap-6 mt-4">
             <div className="flex items-center gap-1.5 text-sm">
               <Star className="w-4 h-4 text-amber-400" />
@@ -176,15 +253,7 @@ export default function ProfilePage() {
         {filtered.length === 0 ? (
           <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8 text-center">
             <Music className="w-8 h-8 text-zinc-600 mx-auto mb-3" />
-            <p className="text-zinc-400 text-sm">
-              No ratings yet.{" "}
-              <Link
-                href="/search"
-                className="text-amber-400 hover:text-amber-300"
-              >
-                Start exploring music!
-              </Link>
-            </p>
+            <p className="text-zinc-400 text-sm">No ratings yet.</p>
           </div>
         ) : (
           <div className="space-y-2">

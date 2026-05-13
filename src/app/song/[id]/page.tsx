@@ -95,12 +95,17 @@ export default function SongPage() {
               username: string;
               display_name: string | null;
             };
-            const reviewArr = r.reviews as unknown as { body: string }[];
+            const reviewData = r.reviews as unknown as
+              | { body: string }
+              | { body: string }[]
+              | null;
+            const body = Array.isArray(reviewData)
+              ? reviewData[0]?.body || null
+              : reviewData?.body || null;
             return {
               id: r.id,
               score: r.score,
-              body:
-                reviewArr && reviewArr.length > 0 ? reviewArr[0].body : null,
+              body,
               created_at: r.created_at,
               username: profile?.username || "unknown",
               display_name: profile?.display_name || null,

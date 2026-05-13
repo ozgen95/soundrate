@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Star } from "lucide-react";
 
 interface ReviewCardProps {
@@ -26,12 +27,12 @@ export default function ReviewCard({
           <div className="w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-bold text-amber-400 shrink-0">
             {(displayName || username)?.[0]?.toUpperCase() || "?"}
           </div>
-          <div>
-            <p className="text-white text-sm font-medium">
+          <Link href={`/user/${username}`}>
+            <p className="text-white text-sm font-medium hover:text-amber-400 transition">
               {displayName || username}
             </p>
             <p className="text-zinc-500 text-xs">@{username}</p>
-          </div>
+          </Link>
         </div>
         <div className="flex items-center gap-1">
           {[1, 2, 3, 4, 5].map((s) => (
