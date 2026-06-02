@@ -2,7 +2,7 @@
 
 A full-stack music rating platform where users rate songs and albums, write reviews, follow friends, and discover what everyone's listening to. Think Letterboxd, but for music.
 
-**Live Demo:** [soundrate.vercel.app](https://soundrate.vercel.app) _(update with your actual URL)_
+**Live Demo:** [soundrate.vercel.app](https://soundrate.vercel.app) 
 
 ## Features
 
