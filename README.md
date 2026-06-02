@@ -46,47 +46,6 @@ The ratings table uses a polymorphic design with a check constraint ensuring eac
 - A [Supabase](https://supabase.com) account
 - A [Spotify Developer](https://developer.spotify.com/dashboard) account
 
-### Setup
-
-1. **Clone the repo**
-
-   ```bash
-   git clone https://github.com/ozgen95/soundrate.git
-   cd soundrate
-   npm install
-   ```
-
-2. **Set up Supabase**
-   - Create a new Supabase project
-   - Run the SQL schema in `supabase/schema.sql` via the SQL Editor
-   - Copy your project URL and anon key
-
-3. **Set up Spotify**
-   - Create an app at developer.spotify.com/dashboard
-   - Add `http://localhost:3000/api/auth/spotify/callback` as a redirect URI
-   - Copy your Client ID and Client Secret
-
-4. **Configure environment variables**
-
-   ```bash
-   cp .env.local.example .env.local
-   ```
-
-   Fill in your keys:
-
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   SPOTIFY_CLIENT_ID=your_spotify_client_id
-   SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
-   ```
-
-5. **Run the dev server**
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000)
-
 ## Project Structure
 
 ```
@@ -113,15 +72,6 @@ src/
 │   └── database.ts       # TypeScript types for the database schema
 └── middleware.ts          # Session refresh middleware
 ```
-
-## Deployment
-
-### Vercel (Current)
-
-1. Connect your GitHub repo to [Vercel](https://vercel.com)
-2. Add environment variables in the Vercel dashboard
-3. Deploy — Vercel auto-detects Next.js and builds accordingly
-4. Update Supabase redirect URLs to include your Vercel domain
 
 ### AWS (Planned)
 
