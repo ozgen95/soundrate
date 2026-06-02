@@ -115,7 +115,7 @@ export default function FeedPage() {
             Follow other users to see their ratings here.{" "}
             <Link
               href="/search"
-              className="text-amber-400 hover:text-amber-300"
+              className="text-green-500 hover:text-green-400"
             >
               Discover music
             </Link>{" "}
@@ -156,11 +156,11 @@ export default function FeedPage() {
                     href={`/user/${profile?.username}`}
                     className="flex items-center gap-2 group"
                   >
-                    <div className="w-7 h-7 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-bold text-amber-400">
+                    <div className="w-7 h-7 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-bold text-green-500">
                       {(profile?.display_name ||
                         profile?.username)?.[0]?.toUpperCase() || "?"}
                     </div>
-                    <span className="text-white text-sm font-medium group-hover:text-amber-400 transition">
+                    <span className="text-white text-sm font-medium group-hover:text-green-500 transition">
                       {profile?.display_name || profile?.username}
                     </span>
                   </Link>
@@ -193,7 +193,7 @@ export default function FeedPage() {
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <p className="text-white font-medium truncate group-hover:text-amber-400 transition">
+                    <p className="text-white font-medium truncate group-hover:text-green-500 transition">
                       {title}
                     </p>
                     <p className="text-zinc-400 text-sm truncate">
@@ -205,7 +205,7 @@ export default function FeedPage() {
                           key={s}
                           className={`w-3.5 h-3.5 ${
                             s <= item.score
-                              ? "text-amber-400 fill-amber-400"
+                              ? "text-green-500 fill-green-500"
                               : "text-zinc-700"
                           }`}
                         />

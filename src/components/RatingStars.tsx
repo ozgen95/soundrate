@@ -53,7 +53,7 @@ export default function RatingStars({
             <Star
               className={`${sizeClasses[size]} transition-colors ${
                 active
-                  ? "text-amber-400 fill-amber-400"
+                  ? "text-green-500 fill-green-500"
                   : "text-zinc-600 hover:text-zinc-400"
               }`}
             />

@@ -41,7 +41,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800/50">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <Music className="w-6 h-6 text-amber-400 group-hover:rotate-12 transition-transform" />
+          <Music className="w-6 h-6 text-green-500 group-hover:rotate-12 transition-transform" />
           <span className="text-lg font-bold text-white tracking-tight">
             SoundRate
           </span>
@@ -101,7 +101,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/auth/signup"
-                className="px-4 py-1.5 bg-amber-400 hover:bg-amber-300 text-zinc-900 font-semibold rounded-lg text-sm transition"
+                className="px-4 py-1.5 bg-green-500 hover:bg-green-400 text-zinc-900 font-semibold rounded-lg text-sm transition"
               >
                 Sign up
               </Link>
@@ -181,7 +181,7 @@ export default function Navbar() {
                 <Link
                   href="/auth/signup"
                   onClick={() => setMenuOpen(false)}
-                  className="block text-amber-400 hover:text-amber-300 font-semibold transition py-1"
+                  className="block text-green-500 hover:text-green-400 font-semibold transition py-1"
                 >
                   Sign up
                 </Link>

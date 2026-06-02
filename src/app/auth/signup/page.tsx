@@ -58,7 +58,7 @@ export default function SignUpPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2">
-            <Music className="w-8 h-8 text-amber-400" />
+            <Music className="w-8 h-8 text-green-500" />
             <span className="text-2xl font-bold text-white tracking-tight">
               SoundRate
             </span>
@@ -69,8 +69,8 @@ export default function SignUpPage() {
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
           {success ? (
             <div className="text-center py-4">
-              <div className="w-12 h-12 rounded-full bg-amber-400/10 flex items-center justify-center mx-auto mb-4">
-                <Music className="w-6 h-6 text-amber-400" />
+              <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
+                <Music className="w-6 h-6 text-green-500" />
               </div>
               <h2 className="text-white text-lg font-semibold mb-2">
                 Check your email
@@ -82,7 +82,7 @@ export default function SignUpPage() {
               </p>
               <Link
                 href="/auth/login"
-                className="inline-block mt-6 text-amber-400 hover:text-amber-300 text-sm font-medium transition"
+                className="inline-block mt-6 text-green-500 hover:text-green-400 text-sm font-medium transition"
               >
                 Back to sign in
               </Link>
@@ -103,7 +103,7 @@ export default function SignUpPage() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition"
+                    className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition"
                     placeholder="yourname"
                   />
                 </div>
@@ -121,7 +121,7 @@ export default function SignUpPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition"
+                    className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -140,7 +140,7 @@ export default function SignUpPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     minLength={6}
-                    className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition"
+                    className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition"
                     placeholder="••••••••"
                   />
                   <p className="text-zinc-500 text-xs mt-1">
@@ -157,7 +157,7 @@ export default function SignUpPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-2.5 bg-amber-400 hover:bg-amber-300 text-zinc-900 font-semibold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-green-500 hover:bg-green-400 text-zinc-900 font-semibold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
@@ -174,7 +174,7 @@ export default function SignUpPage() {
                 Already have an account?{" "}
                 <Link
                   href="/auth/login"
-                  className="text-amber-400 hover:text-amber-300 font-medium transition"
+                  className="text-green-500 hover:text-green-400 font-medium transition"
                 >
                   Sign in
                 </Link>

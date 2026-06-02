@@ -18,7 +18,7 @@ export default async function Home() {
     <div className="min-h-[calc(100vh-4rem)]">
       {/* Hero */}
       <section className="flex flex-col items-center justify-center text-center px-4 pt-24 pb-20">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-sm font-medium mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 text-sm font-medium mb-8">
           <Music className="w-4 h-4" />
           Now in beta
         </div>
@@ -26,7 +26,7 @@ export default async function Home() {
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight max-w-3xl leading-[1.1]">
           Rate the music
           <br />
-          <span className="text-amber-400">you love</span>
+          <span className="text-green-500">you love</span>
         </h1>
 
         <p className="text-zinc-400 text-lg md:text-xl mt-6 max-w-xl leading-relaxed">
@@ -37,7 +37,7 @@ export default async function Home() {
         <div className="flex gap-4 mt-10">
           <Link
             href="/auth/signup"
-            className="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-zinc-900 font-semibold rounded-xl transition text-base"
+            className="px-6 py-3 bg-green-500 hover:bg-green-400 text-zinc-900 font-semibold rounded-xl transition text-base"
           >
             Get started
           </Link>
@@ -55,8 +55,8 @@ export default async function Home() {
       <section className="max-w-5xl mx-auto px-4 pb-24">
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-8">
-            <div className="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center mb-4">
-              <Star className="w-5 h-5 text-amber-400" />
+            <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+              <Star className="w-5 h-5 text-green-500" />
             </div>
             <h3 className="text-lg font-semibold text-white mb-2">
               Rate &amp; Review
@@ -68,8 +68,8 @@ export default async function Home() {
           </div>
 
           <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-8">
-            <div className="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center mb-4">
-              <Users className="w-5 h-5 text-amber-400" />
+            <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+              <Users className="w-5 h-5 text-green-500" />
             </div>
             <h3 className="text-lg font-semibold text-white mb-2">
               Follow Friends
@@ -81,8 +81,8 @@ export default async function Home() {
           </div>
 
           <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-8">
-            <div className="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center mb-4">
-              <ListMusic className="w-5 h-5 text-amber-400" />
+            <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+              <ListMusic className="w-5 h-5 text-green-500" />
             </div>
             <h3 className="text-lg font-semibold text-white mb-2">
               Discover Music

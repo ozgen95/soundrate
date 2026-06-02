@@ -166,7 +166,7 @@ export default function UserProfilePage() {
     <div className="max-w-3xl mx-auto px-4 py-12">
       {/* Profile header */}
       <div className="flex items-start gap-6 mb-10">
-        <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-2xl font-bold text-amber-400 shrink-0">
+        <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-2xl font-bold text-green-500 shrink-0">
           {(profile.display_name || profile.username)?.[0]?.toUpperCase() ||
             "?"}
         </div>
@@ -185,7 +185,7 @@ export default function UserProfilePage() {
                 className={`ml-auto px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1.5 ${
                   isFollowing
                     ? "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 border border-zinc-700"
-                    : "bg-amber-400 text-zinc-900 hover:bg-amber-300"
+                    : "bg-green-500 text-zinc-900 hover:bg-green-400"
                 }`}
               >
                 {isFollowing ? (
@@ -207,7 +207,7 @@ export default function UserProfilePage() {
           )}
           <div className="flex gap-6 mt-4">
             <div className="flex items-center gap-1.5 text-sm">
-              <Star className="w-4 h-4 text-amber-400" />
+              <Star className="w-4 h-4 text-green-500" />
               <span className="text-white font-medium">{ratings.length}</span>
               <span className="text-zinc-500">ratings</span>
             </div>
@@ -301,7 +301,7 @@ export default function UserProfilePage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <p className="text-white font-medium truncate group-hover:text-amber-400 transition">
+                        <p className="text-white font-medium truncate group-hover:text-green-500 transition">
                           {title}
                         </p>
                         <p className="text-zinc-400 text-sm truncate">
@@ -318,7 +318,7 @@ export default function UserProfilePage() {
                             key={s}
                             className={`w-3.5 h-3.5 ${
                               s <= rating.score
-                                ? "text-amber-400 fill-amber-400"
+                                ? "text-green-500 fill-green-500"
                                 : "text-zinc-700"
                             }`}
                           />

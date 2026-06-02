@@ -24,11 +24,11 @@ export default function ReviewCard({
     <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-5">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-bold text-amber-400 shrink-0">
+          <div className="w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-bold text-green-500 shrink-0">
             {(displayName || username)?.[0]?.toUpperCase() || "?"}
           </div>
           <Link href={`/user/${username}`}>
-            <p className="text-white text-sm font-medium hover:text-amber-400 transition">
+            <p className="text-white text-sm font-medium hover:text-green-500 transition">
               {displayName || username}
             </p>
             <p className="text-zinc-500 text-xs">@{username}</p>
@@ -39,7 +39,7 @@ export default function ReviewCard({
             <Star
               key={s}
               className={`w-3.5 h-3.5 ${
-                s <= score ? "text-amber-400 fill-amber-400" : "text-zinc-700"
+                s <= score ? "text-green-500 fill-green-500" : "text-zinc-700"
               }`}
             />
           ))}

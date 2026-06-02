@@ -136,7 +136,7 @@ export default function FindFriendsPage() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by username or name..."
           autoFocus
-          className="w-full pl-12 pr-4 py-3.5 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition text-base"
+          className="w-full pl-12 pr-4 py-3.5 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition text-base"
         />
         {loading && (
           <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500 animate-spin" />
@@ -173,13 +173,13 @@ export default function FindFriendsPage() {
                 className="flex items-center gap-4 flex-1 min-w-0 group"
               >
                 <div className="w-12 h-12 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0">
-                  <span className="text-amber-400 font-bold text-sm">
+                  <span className="text-green-500 font-bold text-sm">
                     {(user.display_name || user.username)?.[0]?.toUpperCase() ||
                       "?"}
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <p className="text-white font-medium truncate group-hover:text-amber-400 transition">
+                  <p className="text-white font-medium truncate group-hover:text-green-500 transition">
                     {user.display_name || user.username}
                   </p>
                   <p className="text-zinc-400 text-sm truncate">
@@ -195,7 +195,7 @@ export default function FindFriendsPage() {
                   className={`px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1.5 shrink-0 ${
                     user.isFollowing
                       ? "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 border border-zinc-700"
-                      : "bg-amber-400 text-zinc-900 hover:bg-amber-300"
+                      : "bg-green-500 text-zinc-900 hover:bg-green-400"
                   }`}
                 >
                   {user.isFollowing ? (

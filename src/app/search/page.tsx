@@ -78,7 +78,7 @@ export default function SearchPage() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for songs, albums, or artists..."
           autoFocus
-          className="w-full pl-12 pr-4 py-3.5 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition text-base"
+          className="w-full pl-12 pr-4 py-3.5 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition text-base"
         />
         {loading && (
           <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500 animate-spin" />
@@ -151,7 +151,7 @@ export default function SearchPage() {
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <p className="text-white font-medium truncate group-hover:text-amber-400 transition">
+                    <p className="text-white font-medium truncate group-hover:text-green-500 transition">
                       {track.name}
                     </p>
                     <p className="text-zinc-400 text-sm truncate">
@@ -195,7 +195,7 @@ export default function SearchPage() {
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <p className="text-white font-medium truncate group-hover:text-amber-400 transition">
+                    <p className="text-white font-medium truncate group-hover:text-green-500 transition">
                       {album.name}
                     </p>
                     <p className="text-zinc-400 text-sm truncate">

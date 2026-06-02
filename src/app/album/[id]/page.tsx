@@ -370,7 +370,7 @@ export default function AlbumPage() {
 
           {avgAlbumRating !== null && (
             <div className="flex items-center gap-2 mt-4">
-              <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+              <Star className="w-5 h-5 text-green-500 fill-green-500" />
               <span className="text-white font-semibold text-lg">
                 {avgAlbumRating}
               </span>
@@ -402,7 +402,7 @@ export default function AlbumPage() {
                 onChange={(e) => setReview(e.target.value)}
                 placeholder="Write a review (optional)..."
                 rows={3}
-                className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition resize-none text-sm"
+                className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition resize-none text-sm"
               />
               <button
                 onClick={handleReviewSubmit}
@@ -411,7 +411,7 @@ export default function AlbumPage() {
                   !review.trim() ||
                   review.trim() === existingReview
                 }
-                className="mt-2 px-4 py-2 bg-amber-400 hover:bg-amber-300 text-zinc-900 font-semibold rounded-lg text-sm transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="mt-2 px-4 py-2 bg-green-500 hover:bg-green-400 text-zinc-900 font-semibold rounded-lg text-sm transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {existingReview ? "Update review" : "Post review"}
               </button>
@@ -423,7 +423,7 @@ export default function AlbumPage() {
           <p className="text-zinc-400 text-sm">
             <Link
               href="/auth/login"
-              className="text-amber-400 hover:text-amber-300 font-medium"
+              className="text-green-500 hover:text-green-400 font-medium"
             >
               Sign in
             </Link>{" "}
@@ -448,14 +448,14 @@ export default function AlbumPage() {
                 {track.track_number}
               </span>
               <div className="flex-1 min-w-0">
-                <p className="text-white truncate group-hover:text-amber-400 transition text-sm">
+                <p className="text-white truncate group-hover:text-green-500 transition text-sm">
                   {track.name}
                 </p>
               </div>
               <div className="flex items-center gap-3 shrink-0">
                 {trackRatings[track.id] && (
                   <span className="flex items-center gap-1 text-sm">
-                    <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                    <Star className="w-3.5 h-3.5 text-green-500 fill-green-500" />
                     <span className="text-zinc-300">
                       {trackRatings[track.id].avg}
                     </span>

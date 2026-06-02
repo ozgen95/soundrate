@@ -38,7 +38,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2">
-            <Music className="w-8 h-8 text-amber-400" />
+            <Music className="w-8 h-8 text-green-500" />
             <span className="text-2xl font-bold text-white tracking-tight">
               SoundRate
             </span>
@@ -61,7 +61,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition"
+                className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition"
                 placeholder="you@example.com"
               />
             </div>
@@ -79,7 +79,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition"
+                className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition"
                 placeholder="••••••••"
               />
             </div>
@@ -93,7 +93,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 bg-amber-400 hover:bg-amber-300 text-zinc-900 font-semibold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full py-2.5 bg-green-500 hover:bg-green-400 text-zinc-900 font-semibold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -110,7 +110,7 @@ export default function LoginPage() {
             Don&apos;t have an account?{" "}
             <Link
               href="/auth/signup"
-              className="text-amber-400 hover:text-amber-300 font-medium transition"
+              className="text-green-500 hover:text-green-400 font-medium transition"
             >
               Sign up
             </Link>

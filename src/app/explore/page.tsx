@@ -228,7 +228,7 @@ export default function ExplorePage() {
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
-                  <p className="text-white text-sm font-medium truncate group-hover:text-amber-400 transition">
+                  <p className="text-white text-sm font-medium truncate group-hover:text-green-500 transition">
                     {track.name}
                   </p>
                   <p className="text-zinc-400 text-xs truncate">
@@ -265,7 +265,7 @@ export default function ExplorePage() {
                     <Disc3 className="w-8 h-8 text-zinc-600" />
                   </div>
                 )}
-                <p className="text-white text-sm font-medium truncate group-hover:text-amber-400 transition">
+                <p className="text-white text-sm font-medium truncate group-hover:text-green-500 transition">
                   {album.name}
                 </p>
                 <p className="text-zinc-400 text-xs truncate">
@@ -291,7 +291,7 @@ export default function ExplorePage() {
                 Be the first to{" "}
                 <Link
                   href="/search"
-                  className="text-amber-400 hover:text-amber-300"
+                  className="text-green-500 hover:text-green-400"
                 >
                   rate some music
                 </Link>
@@ -329,7 +329,7 @@ export default function ExplorePage() {
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <p className="text-white font-medium truncate group-hover:text-amber-400 transition">
+                    <p className="text-white font-medium truncate group-hover:text-green-500 transition">
                       {item.title}
                     </p>
                     <p className="text-zinc-400 text-sm truncate">
@@ -341,7 +341,7 @@ export default function ExplorePage() {
                     </p>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
-                    <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                    <Star className="w-4 h-4 text-green-500 fill-green-500" />
                     <span className="text-white font-medium text-sm">
                       {item.avg_rating}
                     </span>

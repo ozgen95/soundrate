@@ -98,7 +98,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-32">
-        <div className="w-8 h-8 border-2 border-zinc-700 border-t-amber-400 rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-zinc-700 border-t-green-500 rounded-full animate-spin" />
       </div>
     );
   }
@@ -114,7 +114,7 @@ export default function ProfilePage() {
     <div className="max-w-3xl mx-auto px-4 py-12">
       {/* Profile header */}
       <div className="flex items-start gap-6 mb-10">
-        <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-2xl font-bold text-amber-400 shrink-0">
+        <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-2xl font-bold text-green-500 shrink-0">
           {profile.display_name?.[0]?.toUpperCase() ||
             profile.username?.[0]?.toUpperCase() ||
             "?"}
@@ -130,7 +130,7 @@ export default function ProfilePage() {
 
           <div className="flex gap-6 mt-4">
             <div className="flex items-center gap-1.5 text-sm">
-              <Star className="w-4 h-4 text-amber-400" />
+              <Star className="w-4 h-4 text-green-500" />
               <span className="text-white font-medium">{ratings.length}</span>
               <span className="text-zinc-500">ratings</span>
             </div>
@@ -180,7 +180,7 @@ export default function ProfilePage() {
               No ratings yet.{" "}
               <Link
                 href="/search"
-                className="text-amber-400 hover:text-amber-300"
+                className="text-green-500 hover:text-green-400"
               >
                 Start exploring music!
               </Link>
@@ -232,7 +232,7 @@ export default function ProfilePage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <p className="text-white font-medium truncate group-hover:text-amber-400 transition">
+                        <p className="text-white font-medium truncate group-hover:text-green-500 transition">
                           {title}
                         </p>
                         <p className="text-zinc-400 text-sm truncate">
@@ -249,7 +249,7 @@ export default function ProfilePage() {
                             key={s}
                             className={`w-3.5 h-3.5 ${
                               s <= rating.score
-                                ? "text-amber-400 fill-amber-400"
+                                ? "text-green-500 fill-green-500"
                                 : "text-zinc-700"
                             }`}
                           />
